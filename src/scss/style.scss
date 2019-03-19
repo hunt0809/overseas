@@ -1,0 +1,473 @@
+@import "./common/_reset";
+
+//=======set scss`s func
+@mixin pos($val: relative) {
+  position: $val;
+}
+
+@mixin flexbox() {
+  display: flex;
+}
+
+@mixin flexcol($val: column) {
+  @include flexbox;
+  flex-direction: $val;
+}
+
+//set rem
+@media screen and (min-width: 1921px) {
+  html {
+    font-size: 200px;
+  }
+}
+
+@media screen and (min-width: 1681px) and (max-width: 1920px) {
+  html {
+    font-size: 100px;
+  }
+}
+
+@media screen and (min-width: 1367px) and (max-width: 1680px) {
+  html {
+    font-size: 87.5px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  html {
+    font-size: 71.14px;
+  }
+}
+
+body {
+  font-size: 14px;
+}
+
+//loading
+.body-loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  z-index: 9999;
+}
+
+.body-loading .sk-cube-grid {
+  display: block !important;
+}
+
+.sk-cube-grid {
+  z-index: 10000;
+  display: none;
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  position: absolute;
+  left: 50%;
+  margin: -30px 0 0 -30px;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #fff;
+  background: url("/imgs/jfwk.png");
+  background-repeat: no-repeat;
+  background-size: 300%;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-position: 0 0;
+}
+
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  background-position: 50% 0;
+}
+
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+  background-position: 100% 0;
+}
+
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  background-position: 0 50%;
+}
+
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-position: 50% 50%;
+}
+
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+  background-position: 100% 50%;
+}
+
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  background-position: 0 100%;
+}
+
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+  background-position: 50% 100%;
+}
+
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  background-position: 100% 100%;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+
+  0%,
+  100%,
+  70% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+
+  0%,
+  100%,
+  70% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 0, 0, .2);
+  }
+
+  100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+  }
+}
+
+.wrapper,
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.promptBox {
+  @include pos(fixed);
+  display: none;
+  width: 320px;
+  height: 80px;
+  background: rgba(0, 0, 0, .7);
+  top: 50%;
+  left: 50%;
+  margin: -80px 0 0 -160px;
+  cursor: pointer;
+  z-index: 99;
+
+  &>h1 {
+    width: 100%;
+    height: 40px;
+    line-height: 60px;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+  }
+
+  &>small {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    line-height: 32px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+
+    &>em {
+      font-size: 12px;
+      color: #f00;
+    }
+  }
+}
+
+.tab {
+  @include pos(absolute);
+  animation: glow 1s ease-out infinite alternate;
+  top: 0.2rem;
+  left: 0.2rem;
+  width: 3.3rem;
+  height: 0.64rem;
+  background: rgba(0, 0, 0, .2);
+  @include flexcol;
+  z-index: 999;
+  border-radius: 0.1rem;
+  border: 2px solid rgba(0, 0, 0, 0);
+  transition: all 1s;
+  overflow: hidden;
+  &:hover {
+    animation: none;
+    background: rgba(0, 0, 0, .618);
+    border: 2px solid rgba(0, 0, 0, 0.618);
+    color: #fff;
+    &>li {
+      display: block;
+    }
+    &>h2>p {
+      color: #fff;
+    }
+  }
+
+  &>h2 {
+    width: 3.3rem;
+    height: 0.64rem;
+
+    &>p {
+      width: 3.3rem;
+      height: 0.64rem;
+      line-height: 0.6rem;
+      text-align: center;
+      font-size: 0.22rem;
+      font-weight: 600;
+      color: #000;
+    }
+  }
+
+  &>li {
+    display: none;
+    width: 100%;
+    height: 0.64rem;
+    line-height: 0.64rem;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+      background: rgba(237, 241, 245, 1);
+    }
+  }
+
+  &>li.checked {
+    color: #000;
+    background: rgba(237, 241, 245, 1);
+  }
+}
+
+.visualArea {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  @include pos;
+
+  &>.page {
+    @include pos(absolute);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0.2rem;
+
+    &.page0 {
+      @include flexcol;
+      background: rgba(237, 241, 245, 1);
+
+      .header {
+        width: 100%;
+        height: 0.64rem;
+
+        &>h1 {
+          width: 100%;
+          height: 0.64rem;
+          line-height: 0.64rem;
+          text-align: center;
+          font-size: 0.22rem;
+          font-weight: 600;
+        }
+      }
+
+      .section {
+        flex: 1;
+        margin-top: 0.2rem;
+        @include flexbox;
+
+        &>div {
+          &:nth-child(1) {
+            flex: 1;
+            &>div {
+              @include flexcol;
+              background: linear-gradient(to bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
+              &:nth-child(1) {
+                margin-bottom: 0.2rem;
+              }
+              &>p {
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                font-size: 0.18rem;
+              }
+              &>h1 {
+                width: 100%;
+                height: 60px;
+                line-height: 60px;
+                text-align: center;
+                font-size: 0.24rem;
+                font-weight: 600;
+              }
+              &>div {
+                flex: 1;
+              }
+            }
+          }
+          &:nth-child(2){
+            flex: 4;
+            margin-left: 0.2rem;
+            &>div {
+              margin-top: 0.2rem;
+              &:first-child {
+                margin: 0;
+              }
+              @include flexbox;
+              &>div {
+
+                flex: 1;
+                border-radius: 0.2rem;
+
+                &:first-child {
+                  background: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
+                }
+
+                &:last-child {
+                  margin-left: 0.2rem;
+                  background: linear-gradient(-135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
+                }
+
+                @include flexcol;
+                @include pos;
+
+                &>h3 {
+                  width: 0.68rem;
+                  height: 0.26rem;
+                  border-bottom: 0.04rem solid #000;
+                  font-size: 0.16rem;
+                  white-space: nowrap;
+                  color: #000;
+                  position: relative;
+
+                  &>time {
+                    position: absolute;
+                    right: 20px;
+                    color: red;
+                  }
+                }
+
+                &>div {
+                  flex: 1;
+                }
+              }
+            }
+          }
+
+          @include flexcol;
+          &>div {
+            flex: 1;
+          }
+        }
+      }
+    }
+
+    &.page1 {
+      @include flexcol;
+      background: rgba(237, 241, 245, 1);
+
+      .header {
+        width: 100%;
+        height: 0.64rem;
+
+        &>h1 {
+          width: 100%;
+          height: 0.64rem;
+          line-height: 0.64rem;
+          text-align: center;
+          font-size: 0.22rem;
+          font-weight: 600;
+        }
+      }
+
+      .section {
+        flex: 1;
+        margin-top: 0.2rem;
+        @include flexcol;
+
+        &>div {
+          flex: 1;
+          margin-top: 0.2rem;
+
+          &:first-child {
+            margin-top: 0;
+          }
+
+          @include flexbox;
+
+          &>div {
+            flex: 1;
+            border-radius: 0.2rem;
+
+            &:first-child {
+              background: linear-gradient(135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
+            }
+
+            &:last-child {
+              margin-left: 0.2rem;
+              background: linear-gradient(-135deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .05));
+            }
+
+            @include flexcol;
+            @include pos;
+
+            &>h3 {
+              width: 1.4rem;
+              height: 0.26rem;
+              border-bottom: 0.04rem solid #000;
+              font-size: 0.16rem;
+              white-space: nowrap;
+              color: #000;
+            }
+
+            &>div {
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
