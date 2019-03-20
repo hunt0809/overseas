@@ -1,4 +1,3 @@
-var myChart1, myChart2, myChart3, myChart4, myChart5_1, myChart5_2, myChart5_3, myChart7, myChart8, myChart9, myChart10, myChart11, myChart12, myChart13, myChart14, myChart15, myChart16, myChart17, myChart18, myChart19, myChart20, myChart21, myChart22, myChart23, myChart24, myChart25, myChart26;
 var textStyle = {
     rich: {
         a: {
@@ -50,11 +49,10 @@ var textStyle1 = {
     }
 };
 
-function chartChannelOpenCard(aData, data) {
-    var dom = document.getElementById("channelOpenCard");
-    myChart1 = echarts.init(dom, 'dark');
-    var option = null;
-    option = {
+function registered(aData, data) {
+    var dom = document.getElementById(aData.name);
+    var myChart = echarts.init(dom, 'dark');
+    var option = {
         legend: {
             show: true,
             type: 'scroll',
